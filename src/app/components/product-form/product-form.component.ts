@@ -21,8 +21,12 @@ export class ProductFormComponent {
     productImage: new FormControl(null, Validators.required),
     productRate: new FormControl(null, [
       Validators.required,
+<<<<<<< HEAD
       Validators.min(1),
       Validators.max(10)
+=======
+      Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+>>>>>>> 1ce75fdc4da2ac093cf1f0c2bdf2f5f8efa05a99
     ]),
   });
 
@@ -35,10 +39,15 @@ export class ProductFormComponent {
       rate: this.myRegForm.value.productRate,
     };
 
+<<<<<<< HEAD
     if (this.myRegForm.valid) {
       this.EmitterData.emit(obj);
       this.myRegForm.reset();
     }
     console.log(this.myRegForm.valid)
+=======
+    this.EmitterData.emit(obj);
+    this.myRegForm.reset();
+>>>>>>> 1ce75fdc4da2ac093cf1f0c2bdf2f5f8efa05a99
   }
 }
