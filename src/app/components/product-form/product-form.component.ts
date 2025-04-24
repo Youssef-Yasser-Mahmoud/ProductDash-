@@ -1,33 +1,40 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-product-form',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css',
 })
 export class ProductFormComponent {
-  productName: string = '';
-  productDescription: string = '';
-  productImage: string = '';
-  productRate: string = '';
-
   @Output() EmitterData: EventEmitter<any> = new EventEmitter();
+
+  myRegForm = new FormGroup({
+    productName: new FormControl(null, Validators.required),
+    productDescription: new FormControl(null, Validators.required),
+    productImage: new FormControl(null, Validators.required),
+    productRate: new FormControl(null, [
+      Validators.required,
+      Validators.pattern('^[0-9]+(\\.[0-9]{1,2})?$'),
+    ]),
+  });
 
   sendData() {
     let obj = {
       id: Math.random(),
-      name: this.productName,
-      description: this.productDescription,
-      imageURL: this.productImage,
-      rate: this.productRate,
+      name: this.myRegForm.value.productName,
+      description: this.myRegForm.value.productDescription,
+      imageURL: this.myRegForm.value.productImage,
+      rate: this.myRegForm.value.productRate,
     };
 
     this.EmitterData.emit(obj);
-    this.productName = '';
-    this.productDescription = '';
-    this.productImage = '';
-    this.productRate = '';
+    this.myRegForm.reset();
   }
 }
