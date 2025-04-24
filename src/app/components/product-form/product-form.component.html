@@ -7,6 +7,8 @@
         class="form-control"
         id="productName"
         placeholder="Enter product name"
+        name="productName"
+        [(ngModel)]="productName"
       />
     </div>
 
@@ -19,6 +21,8 @@
         class="form-control"
         id="productDescription"
         placeholder="Enter product description"
+        name="productDescription"
+        [(ngModel)]="productDescription"
       />
     </div>
 
@@ -29,6 +33,8 @@
         class="form-control"
         id="productImage"
         placeholder="Enter image URL"
+        name="productImage"
+        [(ngModel)]="productImage"
       />
     </div>
 
@@ -39,9 +45,11 @@
         class="form-control"
         id="productRate"
         placeholder="Enter product rate"
+        name="productRate"
+        [(ngModel)]="productRate"
       />
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary mt-2">Submit</button>
+  <button type="submit" (click)='sendData()' class="btn btn-primary mt-2">ADD</button>
 </form>
