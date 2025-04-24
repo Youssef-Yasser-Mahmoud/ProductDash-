@@ -1,4 +1,4 @@
 <div class="container py-4 px-3">
   <app-product-form (EmitterData)="receiveData($event)"></app-product-form>
-  <app-product-list></app-product-list>
+  <app-product-list [productObj]="productObj"></app-product-list>
 </div>

@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Product } from '../../interface/product';
 
 @Component({
@@ -7,21 +13,18 @@ import { Product } from '../../interface/product';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
-export class ProductListComponent {
-  productList: Product[] = [
-    {
-      id: 1,
-      name: 'Mouse',
-      description: 'This mouse is good',
-      rate: 7.5,
-      imageURL: 'https://fakeimg.pl/300/',
-    },
-    {
-      id: 2,
-      name: 'Keyboard',
-      description: 'This keyboard is good',
-      rate: 5.5,
-      imageURL: 'https://fakeimg.pl/300/',
-    },
-  ];
+export class ProductListComponent implements OnChanges {
+  @Input() productObj!: Product;
+  productList: Product[] = [];
+  // ngOnInit(): void {
+  //   this.productList.push(this.productObj);
+  // }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes['productObj']);
+
+    if (changes['productObj'] && this.productObj) {
+      this.productList.push(this.productObj);
+    }
+  }
 }

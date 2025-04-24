@@ -17,9 +17,10 @@ export class ProductFormComponent {
 
   sendData() {
     let obj = {
+      id: Math.random(),
       name: this.productName,
-      desc: this.productDescription,
-      img: this.productImage,
+      description: this.productDescription,
+      imageURL: this.productImage,
       rate: this.productRate,
     };
 
