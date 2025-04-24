@@ -52,10 +52,10 @@
   </div>
 
   <button
-    [disabled]='!myRegForm.valid'
+    [style.cursor]="!myRegForm.valid ? 'not-allowed' : 'pointer'"
     type="submit"
     (click)="sendData()"
-    class="btn btn-primary mt-2 cursor-pointer"
+    class="btn btn-primary mt-2"
   >
     ADD
   </button>
